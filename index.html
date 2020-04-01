@@ -7,9 +7,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
 
-    <title>pappfer carousel</title>
+    <title>jsCarousel demo</title>
 </head>
 
 <body>
@@ -19,7 +18,22 @@
 
     <script src="js/jsCarousel.js"></script>
     <script>
-        let jsCarousel = new JsCarousel('jsCarousel');
+        let carouselData = [
+            {title: 'First', src: 'img/carousel/1.png', url: '#', description: 'First description'},
+            {title: 'Second', src: 'img/carousel/2.png', url: '#', description: 'Second description'},
+            {title: 'Third', src: 'img/carousel/3.png', url: '#', description: 'Third description'},
+            {title: 'Fourth', src: 'img/carousel/4.png', url: '#', description: 'Fourth description'},
+            {title: 'Fifth', src: 'img/carousel/5.png', url: '#', description: 'Fifth description'},
+            {title: 'Sixth', src: 'img/carousel/6.png', url: '#', description: 'Sixth description'},
+            {title: 'Seventh', src: 'img/carousel/7.png', url: '#', description: 'Seventh description'},
+            {title: 'Eighth', src: 'img/carousel/8.png', url: '#', description: 'Eighth description'},
+            {title: 'Ninth', src: 'img/carousel/9.png', url: '#', description: 'Ninth description'},
+            {title: 'Tenth', src: 'img/carousel/10.png', url: '#', description: 'Tenth description'},
+        ];
+
+        let jsCarousel = new JsCarousel('jsCarousel', carouselData, {
+
+        });
     </script>
 </body>
 

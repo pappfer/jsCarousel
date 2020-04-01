@@ -1,42 +1,29 @@
 class JsCarousel {
 
-    constructor() {
+    constructor(selector, data, options = {}) {
         this.id = 'jsCarousel';
         this.name = 'jsCarousel';
-        this.container = document.getElementById(this.id);
-        this.imageIndex = null;
+
+        this.options = Object.assign({
+            imagesToShow: 3,
+            animationDelay: 2,
+            animationDuration: 2,
+            displayToggleButton: true,
+            imageOffsetX: -100,
+            imageOffsetY: 30,
+        }, options);
+
+        this.container = document.getElementById(selector);
         this.currentImage = 0;
-        this.imagesToShow = 3;
-
-        this.images = [
-            {title: 'First', src: 'img/carousel/1.png', url: '#', description: 'First description'},
-            {title: 'Second', src: 'img/carousel/2.png', url: '#', description: 'Second description'},
-            {title: 'Third', src: 'img/carousel/3.png', url: '#', description: 'Third description'},
-            {title: 'Fourth', src: 'img/carousel/4.png', url: '#', description: 'Fourth description'},
-            {title: 'Fifth', src: 'img/carousel/5.png', url: '#', description: 'Fifth description'},
-            {title: 'Sixth', src: 'img/carousel/6.png', url: '#', description: 'Sixth description'},
-            {title: 'Seventh', src: 'img/carousel/7.png', url: '#', description: 'Seventh description'},
-            {title: 'Eighth', src: 'img/carousel/8.png', url: '#', description: 'Eighth description'},
-            {title: 'Ninth', src: 'img/carousel/9.png', url: '#', description: 'Ninth description'},
-            {title: 'Tenth', src: 'img/carousel/10.png', url: '#', description: 'Tenth description'},
-        ];
-
-        this.animationDelay = 2;
-        this.animationDuration = 2;
-
-        this.currentDot = null;
-        this.nextDot = null;
-        this.keyframes = null;
+        this.images = data;
         this.animations = [];
         this.animationSettings = {
-            duration: this.animationDuration * 1000,
+            duration: this.options.animationDuration * 1000,
             easing: 'ease-in-out',
             fill: 'both',
-            delay: this.animationDelay * 1000,
+            delay: this.options.animationDelay * 1000,
             //iterations: Infinity
         };
-        this.imageOffsetX = -100;
-        this.imageOffsetY = 30;
 
         this.container.classList.add('jsCarousel');
 
@@ -62,22 +49,25 @@ class JsCarousel {
         dotsContainer.setAttribute('class', this.setClass('__dots'));
         contentContainer.appendChild(dotsContainer);
 
-        let toggleButton = document.createElement("button");
-        toggleButton.setAttribute('id', this.setId('__toggle-button'));
-        toggleButton.setAttribute('class', this.setId('__btn'));
-        toggleButton.innerText = 'Pause';
-        toggleButton.addEventListener("click", function() {
-            for (let i = 0; i <= self.imagesToShow; i++) {
-                if (self.animations[i].playState === "running") {
-                    self.animations[i].pause();
-                    toggleButton.innerText = 'Play';
-                } else {
-                    self.animations[i].play();
-                    toggleButton.innerText = 'Pause';
+        if (this.options.displayToggleButton) {
+            let toggleButton = document.createElement("button");
+            toggleButton.setAttribute('id', this.setId('__toggle-button'));
+            toggleButton.setAttribute('class', this.setId('__btn'));
+            toggleButton.innerText = 'Pause';
+            toggleButton.addEventListener("click", function () {
+                for (let i = 0; i <= this.options.imagesToShow; i++) {
+                    if (self.animations[i].playState === "running") {
+                        self.animations[i].pause();
+                        toggleButton.innerText = 'Play';
+                    } else {
+                        self.animations[i].play();
+                        toggleButton.innerText = 'Pause';
+                    }
                 }
-            }
-        });
-        contentContainer.appendChild(toggleButton);
+            });
+            contentContainer.appendChild(toggleButton);
+        }
+
         let startScale = 1.0;
         let endScale = 1.2;
         let startOpacity = 1.0;
@@ -115,7 +105,7 @@ class JsCarousel {
             slideContent.innerHTML = self.images[i].description;
             slideContainer.appendChild(slideContent);
 
-            if (i <= self.imagesToShow) {
+            if (i <= self.options.imagesToShow) {
                 let imageNode = document.createElement("img");
                 imageNode.setAttribute('src', self.images[i].src);
                 imageNode.setAttribute('alt', self.images[i].title);
@@ -130,24 +120,23 @@ class JsCarousel {
                 if (i === 0) {
                     // First image
                     endOpacity = 0.0;
-                } else if (i === self.imagesToShow) {
+                } else if (i === self.options.imagesToShow) {
                     // Last image
                     startOpacity = 0.0;
                 } else {
-                    startOpacity -= .2;
                     endOpacity = 1.0;
                 }
 
                 let keyframes = [
                     {transform: 'translate(0, 0) scale(' + startScale + ')', opacity: startOpacity},
-                    {transform: 'translate(' + self.imageOffsetX + 'px, ' + self.imageOffsetY + 'px) scale(' + endScale + ')', opacity: endOpacity}
+                    {transform: 'translate(' + self.options.imageOffsetX + 'px, ' + self.options.imageOffsetY + 'px) scale(' + endScale + ')', opacity: endOpacity}
                 ];
 
                 self.animations[i] = imageNode.animate(keyframes, self.animationSettings);
                 startScale -= 0.2;
                 endScale -= 0.2;
-                imageLeft -= self.imageOffsetX;
-                imageTop -= self.imageOffsetY;
+                imageLeft -= self.options.imageOffsetX;
+                imageTop -= self.options.imageOffsetY;
             }
         });
 
@@ -182,7 +171,7 @@ class JsCarousel {
         nextSlide.classList.add('active');
         let imageIndex = this.currentImage;
 
-        for (let i = 0; i <= this.imagesToShow; i++) {
+        for (let i = 0; i <= this.options.imagesToShow; i++) {
 
             imageIndex = this.currentImage + i;
 
@@ -202,17 +191,5 @@ class JsCarousel {
 
     setClass(className) {
         return this.name + className;
-    }
-
-    pause() {
-        for (let i = 0; i <= this.imagesToShow; i++) {
-            this.animations[i].cancel();
-        }
-    }
-
-    play() {
-        for (let i = 0; i <= this.imagesToShow; i++) {
-            this.animations[i].play();
-        }
     }
 }
