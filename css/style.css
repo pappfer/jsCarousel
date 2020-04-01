@@ -1,0 +1,56 @@
+:root {
+  --color-light-blue: #89b5e4;
+  --color-dark-blue: #659bd4;
+  --carousel-transition-delay: 2s; }
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 15px; }
+
+.jsCarousel {
+  display: flex; }
+  .jsCarousel__title {
+    font-size: 24px; }
+  .jsCarousel__subtitle {
+    color: lightskyblue;
+    font-size: 24px; }
+  .jsCarousel__content {
+    flex: 0 0 50%; }
+  .jsCarousel__images {
+    flex: 0 0 50%;
+    position: relative; }
+  .jsCarousel__dots {
+    margin: 20px 0; }
+  .jsCarousel__link {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 15px;
+    border: 1px solid var(--color-dark-blue);
+    border-radius: 15px;
+    transition: all .6s;
+    cursor: pointer; }
+    .jsCarousel__link.active {
+      background-color: var(--color-dark-blue);
+      border-width: 4px; }
+  .jsCarousel__slide {
+    display: none;
+    transform: translate(-1000, 0);
+    transition: all 5s ease-in-out;
+    font-size: 26px; }
+    .jsCarousel__slide h1 {
+      font-size: 48px; }
+  .jsCarousel__slide.active {
+    display: block;
+    opacity: 1; }
+  .jsCarousel__btn {
+    color: #fff;
+    padding: 15px 25px;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    background-image: linear-gradient(to right bottom, var(--color-light-blue), var(--color-dark-blue)); }
+  .jsCarousel__image {
+    width: 50%;
+    position: absolute; }
