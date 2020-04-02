@@ -3,38 +3,106 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="css/style.css" rel="stylesheet">
 
     <title>jsCarousel demo</title>
 </head>
 
 <body>
-    <div class="container">
-        <div id="jsCarousel"></div>
-    </div>
+<div class="container">
+    <div id="jsCarousel"></div>
+</div>
 
-    <script src="js/jsCarousel.js"></script>
-    <script>
-        let carouselData = [
-            {title: 'First', src: 'img/carousel/1.png', url: '#', description: 'First description'},
-            {title: 'Second', src: 'img/carousel/2.png', url: '#', description: 'Second description'},
-            {title: 'Third', src: 'img/carousel/3.png', url: '#', description: 'Third description'},
-            {title: 'Fourth', src: 'img/carousel/4.png', url: '#', description: 'Fourth description'},
-            {title: 'Fifth', src: 'img/carousel/5.png', url: '#', description: 'Fifth description'},
-            {title: 'Sixth', src: 'img/carousel/6.png', url: '#', description: 'Sixth description'},
-            {title: 'Seventh', src: 'img/carousel/7.png', url: '#', description: 'Seventh description'},
-            {title: 'Eighth', src: 'img/carousel/8.png', url: '#', description: 'Eighth description'},
-            {title: 'Ninth', src: 'img/carousel/9.png', url: '#', description: 'Ninth description'},
-            {title: 'Tenth', src: 'img/carousel/10.png', url: '#', description: 'Tenth description'},
-        ];
+<script src="js/jsCarousel.js"></script>
+<script>
+    let carouselData = [
+        {
+            title: 'Simply the most advanced Data Privacy product available',
+            src: 'img/carousel/1.png',
+            url: '#',
+            description: 'Express, Enterprise and Premium services allow you to quickly and simply keep your privacy program on track. From company wide privacy audits to detailed risk assessments and pro-active breach protection, we have a solution that will suit your needs.',
+        },
+        {
+            title: 'Free to use Privacy research',
+            src: 'img/carousel/2.png',
+            url: '#',
+            description: 'We bring privacy legislation from around the world, fully cross referenced by keyword, privacy topic, legal category & reporting groups',
+        },
+        {
+            title: 'Library of privacy controls',
+            src: 'img/carousel/3.png',
+            url: '#',
+            description: 'View the legislation as it was drafted, by chapter, section, article and control.',
+        },
+        {
+            title: 'Compare privacy legislation',
+            src: 'img/carousel/4.png',
+            url: '#',
+            description: 'Select multiple standards and search by privacy keywords and topics',
+        },
+        {
+            title: 'Breach/ROI calculator',
+            src: 'img/carousel/5.png',
+            url: '#',
+            description: 'Model the impact of a data breach with real world examples of breaches in your industry',
+        },
+        {
+            title: 'Track latest breaches and fines',
+            src: 'img/carousel/6.png',
+            url: '#',
+            description: 'We monitor the latest breaches and regulatory fines and alert you based on your interest',
+        },
+        {
+            title: 'Concise management reports',
+            src: 'img/carousel/7.png',
+            url: '#',
+            description: 'We collate data privacy statistics and can report by location, geographical region, division & department.',
+        },
+        {
+            title: 'Visualise international and EU boarder transits',
+            src: 'img/carousel/8.png',
+            url: '#',
+            description: 'We track all border transits and highlight which privacy legislation you are exposed to.',
+        },
+        {
+            title: 'How is my data linked?',
+            src: 'img/carousel/9.png',
+            url: '#',
+            description: 'A picture speaks a thousand words.  We can see what is linked to what, how data is used and who uses it with one picture',
+        },
+        {
+            title: 'Flexible reporting',
+            src: 'img/carousel/10.png',
+            url: '#',
+            description: 'We can answer any question an auditor would ask, by process, application, asset or data.  We have many reports and all can be exported in MS Excel, pdf, CSV at the click of a button',
+        },
+        {
+            title: 'No code, same day setup SAR and Consumer Request portal',
+            src: 'img/carousel/11.png',
+            url: '#',
+            description: 'One portal & one interface for all your privacy legislation consumer requests. CCPA, GDPR, LGPD ……..'
+        },
+        {
+            title: 'Breach notification in the format of your regulatory authority',
+            src: 'img/carousel/12.png',
+            url: '#',
+            description: 'California, ICO, CNIL, BDGS, PDPA, CNPD, LGPD.. Pick your format.  We support them all'
+        },
+        {
+            title: '100+ Languages supported',
+            src: 'img/carousel/13.png',
+            url: '#',
+            description: 'English, American, Braziliarno, Singlish, Arabic rtl, Chinese, Japanese, Greek.. Over 100 languages supporting including non-Latin based'
+        },
+    ];
 
-        let jsCarousel = new JsCarousel('jsCarousel', carouselData, {
-
-        });
-    </script>
+    let jsCarousel = new JsCarousel('jsCarousel', carouselData, {
+        title: "Proteus®NextGen Data Privacy™",
+    });
+</script>
 </body>
 
 </html>

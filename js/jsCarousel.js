@@ -5,6 +5,7 @@ class JsCarousel {
         this.name = 'jsCarousel';
 
         this.options = Object.assign({
+            title: "jsCarousel",
             imagesToShow: 3,
             animationDelay: 2,
             animationDuration: 2,
@@ -29,15 +30,25 @@ class JsCarousel {
 
         let self = this;
 
+        let bodyContainer = document.createElement("div");
+        bodyContainer.setAttribute('id', this.setId('__body'));
+        bodyContainer.setAttribute('class', this.setClass('__body'));
+        this.container.appendChild(bodyContainer);
+
+        let footerContainer = document.createElement("div");
+        footerContainer.setAttribute('id', this.setId('__footer'));
+        footerContainer.setAttribute('class', this.setClass('__footer'));
+        this.container.appendChild(footerContainer);
+
         let contentContainer = document.createElement("div");
         contentContainer.setAttribute('id', this.setId('__content'));
         contentContainer.setAttribute('class', this.setClass('__content'));
-        this.container.appendChild(contentContainer);
+        bodyContainer.appendChild(contentContainer);
 
         let imagesContainer = document.createElement("div");
         imagesContainer.setAttribute('id', this.setId('__images'));
         imagesContainer.setAttribute('class', this.setClass('__images'));
-        this.container.appendChild(imagesContainer);
+        bodyContainer.appendChild(imagesContainer);
 
         let slidesContainer = document.createElement("div");
         slidesContainer.setAttribute('id', this.setId('__slides'));
@@ -47,7 +58,7 @@ class JsCarousel {
         let dotsContainer = document.createElement("div");
         dotsContainer.setAttribute('id', this.setId('__dots'));
         dotsContainer.setAttribute('class', this.setClass('__dots'));
-        contentContainer.appendChild(dotsContainer);
+        footerContainer.appendChild(dotsContainer);
 
         if (this.options.displayToggleButton) {
             let toggleButton = document.createElement("button");
@@ -55,7 +66,7 @@ class JsCarousel {
             toggleButton.setAttribute('class', this.setId('__btn'));
             toggleButton.innerText = 'Pause';
             toggleButton.addEventListener("click", function () {
-                for (let i = 0; i <= this.options.imagesToShow; i++) {
+                for (let i = 0; i <= self.options.imagesToShow; i++) {
                     if (self.animations[i].playState === "running") {
                         self.animations[i].pause();
                         toggleButton.innerText = 'Play';
@@ -65,7 +76,7 @@ class JsCarousel {
                     }
                 }
             });
-            contentContainer.appendChild(toggleButton);
+            footerContainer.appendChild(toggleButton);
         }
 
         let startScale = 1.0;
@@ -77,14 +88,29 @@ class JsCarousel {
 
         Object.keys(this.images).forEach(function (value, i) {
             let linkNode = document.createElement("a");
-            let id = self.id + '__link--' + i;
-            linkNode.setAttribute('id', id);
+            let linkId = self.id + '__link--' + i;
+            linkNode.setAttribute('id', linkId);
             linkNode.setAttribute('class', self.id + '__link' + (i === 0 ? ' active' : ''));
             dotsContainer.appendChild(linkNode);
 
-            document.getElementById(id).addEventListener('click', function () {
+            document.getElementById(linkId).addEventListener('click', function () {
                 self.currentImage = i;
                 self.updateSlide();
+            });
+
+            let breakWhen = 20;
+            document.getElementById(linkId).addEventListener('mouseover', function () {
+                while (self.currentImage !== i) {
+                    self.currentImage++;
+
+                    if (self.currentImage >= self.images.length) {
+                        self.currentImage = 0;
+                    }
+
+                    console.log(self.currentImage);
+
+                    self.updateSlide();
+                }
             });
 
             let slideContainer = document.createElement("section");
@@ -98,8 +124,13 @@ class JsCarousel {
 
             let slideTitle = document.createElement("h1");
             slideTitle.setAttribute('class', self.setClass('__title'));
-            slideTitle.innerText = self.images[i].title;
+            slideTitle.innerText = self.options.title;
             slideContainer.appendChild(slideTitle);
+
+            let slideSubtitle = document.createElement("h2");
+            slideSubtitle.setAttribute('class', self.setClass('__subtitle'));
+            slideSubtitle.innerText = self.images[i].title;
+            slideContainer.appendChild(slideSubtitle);
 
             let slideContent = document.createElement("div");
             slideContent.innerHTML = self.images[i].description;
