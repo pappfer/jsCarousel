@@ -16,6 +16,7 @@ class JsCarousel {
 
         this.container = document.getElementById(selector);
         this.currentImage = 0;
+        this.gotoImage = null;
         this.images = data;
         this.animations = [];
         this.animationSettings = {
@@ -98,19 +99,8 @@ class JsCarousel {
                 self.updateSlide();
             });
 
-            let breakWhen = 20;
             document.getElementById(linkId).addEventListener('mouseover', function () {
-                while (self.currentImage !== i) {
-                    self.currentImage++;
-
-                    if (self.currentImage >= self.images.length) {
-                        self.currentImage = 0;
-                    }
-
-                    console.log(self.currentImage);
-
-                    self.updateSlide();
-                }
+                self.gotoSlide(i);
             });
 
             let slideContainer = document.createElement("section");
@@ -198,6 +188,18 @@ class JsCarousel {
 
         let nextDot = document.getElementById(this.id + '__link--' + this.currentImage);
         let nextSlide = document.getElementById(this.id + '__slide--' + this.currentImage);
+
+        if (this.gotoImage === this.currentImage) {
+            for (let j = 0; j <= this.options.imagesToShow; j++) {
+                this.animations[j].effect.updateTiming({
+                    delay: this.options.animationDelay * 1000,
+                    duration: this.options.animationDuration * 1000,
+                });
+            }
+
+            this.gotoImage = null;
+        }
+
         nextDot.classList.add('active');
         nextSlide.classList.add('active');
         let imageIndex = this.currentImage;
@@ -213,6 +215,19 @@ class JsCarousel {
             document.getElementById(this.id + '__image--' + i).src = this.images[imageIndex].src;
 
             this.animations[i].currentTime = 0;
+        }
+    }
+
+    gotoSlide(i) {
+        this.gotoImage = i;
+
+        if (this.currentImage !== this.gotoImage) {
+            for (let j = 0; j <= this.options.imagesToShow; j++) {
+                this.animations[j].effect.updateTiming({
+                    delay: 0,
+                    duration: 100,
+                });
+            }
         }
     }
 
