@@ -7,8 +7,8 @@ class JsCarousel {
         this.options = Object.assign({
             title: "jsCarousel",
             imagesToShow: 3,
-            animationDelay: 2,
-            animationDuration: 2,
+            animationDelay: 5,
+            animationDuration: 1.5,
             displayToggleButton: true,
             imageOffsetX: -100,
             imageOffsetY: 30,
