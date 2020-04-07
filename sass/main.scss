@@ -11,6 +11,9 @@
 }
 
 .jsCarousel {
+    height: 500px;
+    position: relative;
+
     &__title {
         font-size: 20px;
     }
@@ -22,14 +25,21 @@
 
     &__body {
         display: flex;
-        height: 500px;
     }
 
     &__content {
         flex: 0 0 50%;
+
+        h1 {
+            font-size: 34px;
+            font-weight: 700;
+        }
     }
 
     &__footer {
+        position: absolute;
+        margin-top: 20px;
+        bottom: 0;
     }
 
     &__images {
@@ -37,17 +47,18 @@
         position: relative;
     }
 
-    &__dots {
+    &__dots-container {
         display: flex;
-        justify-content: center;
         margin: 20px 0;
+        justify-content: center;
+        align-items: center;
     }
 
     &__link {
         display: inline-block;
-        width: 15px;
-        height: 15px;
-        margin: 15px;
+        width: 10px;
+        height: 10px;
+        margin: 10px;
         border: 1px solid var(--color-dark-blue);
         border-radius: 15px;
         transition: all .6s;
@@ -55,33 +66,43 @@
 
         &.active, &:hover {
             background-color: var(--color-dark-blue);
-            border-width: 4px;
+            border-width: 2px;
         }
+    }
+
+    &__footer-items {
     }
 
     &__footer-item {
         display: flex;
-        justify-content: space-around;
-        visibility: hidden;
-        opacity: 0;
-        height: 0;
-        transform: scale(.5);
-        margin-left: 20px;
-        transition: visibility 0s, all .4s linear;
+        justify-content: center;
+        align-items: center;
+
+        .column {
+            visibility: hidden;
+            opacity: 0;
+            height: 0;
+            transform: scale(.5);
+            margin-left: 20px;
+            transition: all .4s linear;
+        }
 
         &.active {
-            visibility: visible;
-            opacity: 1;
-            height: auto;
-            transform: scale(1);
-            margin-left: 0;
+            .column {
+                visibility: visible;
+                opacity: 1;
+                height: auto;
+                vertical-align: middle;
+                transform: scale(1);
+                margin-left: 0;
+            }
         }
     }
 
     &__footer-item-column {
         padding: 0 2rem;
-        flex: 1;
         text-align: center;
+        font-weight: bold;
 
         &:not(:last-child) {
             border-right: 1px solid var(--color-dark-blue);
@@ -99,11 +120,9 @@
         font-size: 20px;
         transform: scale(.8);
         position: absolute;
-        top: 300px;
-
-        h1 {
-            font-size: 36px;
-        }
+        top: 100px;
+        left: 0;
+        margin-top: 60px;
 
         h2 {
             font-size: 28px;
@@ -115,15 +134,32 @@
         opacity: 1;
         transform: scale(1);
         top: 0;
+        left: 0;
     }
 
     &__btn {
         color: #fff;
-        padding: 15px 25px;
-        font-size: 20px;
+        padding: 8px 12px;
         border: none;
-        border-radius: 25px;
+        border-radius: 5px;
+        font-size: 14px;
         background-image: linear-gradient(to right bottom, var(--color-light-blue), var(--color-dark-blue));
+    }
+
+    &__btn-cta {
+        color: var(--color-dark-blue);
+        border: 2px solid var(--color-dark-blue);
+        padding: 8px 12px;
+        border-radius: 85px;
+        font-size: 14px;
+        font-weight: bold;
+        background-color: transparent;
+        cursor: pointer;
+
+        &:hover {
+            color: #fff;
+            background-color: var(--color-dark-blue);
+        }
     }
 
     &__image {

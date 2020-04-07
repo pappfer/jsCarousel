@@ -56,34 +56,20 @@ class JsCarousel {
         slidesContainer.setAttribute('class', this.setClass('__slides'));
         contentContainer.appendChild(slidesContainer);
 
+        let slideTitle = document.createElement("h1");
+        slideTitle.setAttribute('class', self.setClass('__title'));
+        slideTitle.innerText = self.options.title;
+        contentContainer.appendChild(slideTitle);
+
         let footerItemsContainer = document.createElement("div");
         footerItemsContainer.setAttribute('id', this.setId('__footer-items'));
         footerItemsContainer.setAttribute('class', this.setClass('__footer-items'));
         footerContainer.appendChild(footerItemsContainer);
 
         let dotsContainer = document.createElement("div");
-        dotsContainer.setAttribute('id', this.setId('__dots'));
-        dotsContainer.setAttribute('class', this.setClass('__dots'));
+        dotsContainer.setAttribute('id', this.setId('__dots-container'));
+        dotsContainer.setAttribute('class', this.setClass('__dots-container'));
         footerContainer.appendChild(dotsContainer);
-
-        if (this.options.displayToggleButton) {
-            let toggleButton = document.createElement("button");
-            toggleButton.setAttribute('id', this.setId('__toggle-button'));
-            toggleButton.setAttribute('class', this.setId('__btn'));
-            toggleButton.innerText = 'Pause';
-            toggleButton.addEventListener("click", function () {
-                for (let i = 0; i <= self.options.imagesToShow; i++) {
-                    if (self.animations[i].playState === "running") {
-                        self.animations[i].pause();
-                        toggleButton.innerText = 'Play';
-                    } else {
-                        self.animations[i].play();
-                        toggleButton.innerText = 'Pause';
-                    }
-                }
-            });
-            footerContainer.appendChild(toggleButton);
-        }
 
         let startScale = 1.0;
         let endScale = 1.2;
@@ -108,15 +94,31 @@ class JsCarousel {
                 self.gotoSlide(i);
             });
 
+            document.getElementById(linkId).addEventListener('mouseleave', function () {
+                self.play();
+            });
+
             let footerItemNode = document.createElement("div");
             footerItemNode.setAttribute('id', self.setId('__footer-item--' + i));
             footerItemNode.setAttribute('class', self.id + '__footer-item' + (i === 0 ? ' active' : ''));
+            let footerItemTransitionDelay = .4;
             self.images[i].footerItems.forEach(function(footerItemValue, footerItemIndex) {
                 let footerItemColumnNode = document.createElement("div");
-                footerItemColumnNode.setAttribute('class', self.id + '__footer-item-column');
+                footerItemColumnNode.setAttribute('class', self.id + '__footer-item-column column');
                 footerItemColumnNode.innerHTML = footerItemValue;
+                footerItemColumnNode.style.transitionDelay = footerItemTransitionDelay + 's';
                 footerItemNode.appendChild(footerItemColumnNode);
+                footerItemTransitionDelay += .2;
             });
+
+            let ctaButtonContainer = document.createElement("div");
+            ctaButtonContainer.setAttribute('class', self.id + '__footer-item-column column');
+            ctaButtonContainer.style.transitionDelay = footerItemTransitionDelay + 's';
+            let ctaButton = document.createElement("button");
+            ctaButton.setAttribute('class', self.setClass('__btn-cta'));
+            ctaButton.textContent = 'Request a demo';
+            ctaButtonContainer.appendChild(ctaButton);
+            footerItemNode.appendChild(ctaButtonContainer);
             footerItemsContainer.appendChild(footerItemNode);
 
             let slideContainer = document.createElement("section");
@@ -127,11 +129,6 @@ class JsCarousel {
             if (i === 0) {
                 slideContainer.classList.add('active');
             }
-
-            let slideTitle = document.createElement("h1");
-            slideTitle.setAttribute('class', self.setClass('__title'));
-            slideTitle.innerText = self.options.title;
-            slideContainer.appendChild(slideTitle);
 
             let slideSubtitle = document.createElement("h2");
             slideSubtitle.setAttribute('class', self.setClass('__subtitle'));
@@ -166,7 +163,8 @@ class JsCarousel {
 
                 let keyframes = [
                     {transform: 'translate(0, 0) scale(' + startScale + ')', opacity: startOpacity},
-                    {transform: 'translate(' + self.options.imageOffsetX + 'px, ' + self.options.imageOffsetY + 'px) scale(' + endScale + ')', opacity: endOpacity}
+                    {transform: 'translate(' + self.options.imageOffsetX + 'px, ' +
+                            self.options.imageOffsetY + 'px) scale(' + endScale + ')', opacity: endOpacity}
                 ];
 
                 self.animations[i] = imageNode.animate(keyframes, self.animationSettings);
@@ -176,6 +174,27 @@ class JsCarousel {
                 imageTop -= self.options.imageOffsetY;
             }
         });
+
+        /*if (this.options.displayToggleButton) {
+            let toggleButtonContainer = document.createElement("div");
+            dotsContainer.appendChild(toggleButtonContainer);
+            let toggleButton = document.createElement("button");
+            toggleButton.setAttribute('id', this.setId('__toggle-button'));
+            toggleButton.setAttribute('class', this.setId('__btn'));
+            toggleButton.innerText = 'Pause';
+            toggleButton.addEventListener("click", function () {
+                for (let i = 0; i <= self.options.imagesToShow; i++) {
+                    if (self.animations[i].playState === "running") {
+                        self.animations[i].pause();
+                        toggleButton.innerText = 'Play';
+                    } else {
+                        self.animations[i].play();
+                        toggleButton.innerText = 'Pause';
+                    }
+                }
+            });
+            toggleButtonContainer.appendChild(toggleButton);
+        }*/
 
         if (this.animations instanceof Array && typeof this.animations[0] === "object") {
             let self = this;
@@ -220,6 +239,7 @@ class JsCarousel {
             }
 
             this.gotoImage = null;
+            this.pause();
         }
 
         nextDot.classList.add('active');
@@ -251,6 +271,8 @@ class JsCarousel {
                     duration: 100,
                 });
             }
+        } else {
+            this.pause();
         }
     }
 
@@ -260,5 +282,17 @@ class JsCarousel {
 
     setClass(className) {
         return this.name + className;
+    }
+
+    pause() {
+        for (let i = 0; i <= this.options.imagesToShow; i++) {
+            this.animations[i].pause();
+        }
+    }
+
+    play() {
+        for (let i = 0; i <= this.options.imagesToShow; i++) {
+            this.animations[i].play();
+        }
     }
 }
