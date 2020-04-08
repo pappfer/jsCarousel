@@ -11,7 +11,6 @@
 }
 
 .jsCarousel {
-    height: 500px;
     position: relative;
 
     &__title {
@@ -37,9 +36,7 @@
     }
 
     &__footer {
-        position: absolute;
         margin-top: 20px;
-        bottom: 0;
     }
 
     &__images {
@@ -71,17 +68,25 @@
     }
 
     &__footer-items {
+        position: relative;
+        min-height: 50px;
     }
 
     &__footer-item {
         display: flex;
         justify-content: center;
         align-items: center;
+        position: absolute;
+        top: 0;
+        left:0;
+        right:0;
+        margin-left:auto;
+        margin-right:auto;
 
         .column {
             visibility: hidden;
-            opacity: 0;
-            height: 0;
+            z-index: -1;
+            opacity: 0.5;
             transform: scale(.5);
             margin-left: 20px;
             transition: all .4s linear;
@@ -90,8 +95,8 @@
         &.active {
             .column {
                 visibility: visible;
+                z-index: 1;
                 opacity: 1;
-                height: auto;
                 vertical-align: middle;
                 transform: scale(1);
                 margin-left: 0;
@@ -155,6 +160,7 @@
         font-weight: bold;
         background-color: transparent;
         cursor: pointer;
+        text-decoration: none;
 
         &:hover {
             color: #fff;
@@ -163,7 +169,6 @@
     }
 
     &__image {
-        width: 50%;
         position: absolute;
     }
 }

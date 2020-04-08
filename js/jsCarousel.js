@@ -12,6 +12,12 @@ class JsCarousel {
             displayToggleButton: true,
             imageOffsetX: -100,
             imageOffsetY: 30,
+            imageHeight: 350,
+            ctaButton: {
+                enabled: true,
+                text: 'Request a demo',
+                href: '#contact'
+            }
         }, options);
 
         this.container = document.getElementById(selector);
@@ -34,6 +40,7 @@ class JsCarousel {
         let bodyContainer = document.createElement("div");
         bodyContainer.setAttribute('id', this.setId('__body'));
         bodyContainer.setAttribute('class', this.setClass('__body'));
+        bodyContainer.setAttribute('style', 'height: ' + this.options.imageHeight + 'px');
         this.container.appendChild(bodyContainer);
 
         let footerContainer = document.createElement("div");
@@ -111,14 +118,18 @@ class JsCarousel {
                 footerItemTransitionDelay += .2;
             });
 
-            let ctaButtonContainer = document.createElement("div");
-            ctaButtonContainer.setAttribute('class', self.id + '__footer-item-column column');
-            ctaButtonContainer.style.transitionDelay = footerItemTransitionDelay + 's';
-            let ctaButton = document.createElement("button");
-            ctaButton.setAttribute('class', self.setClass('__btn-cta'));
-            ctaButton.textContent = 'Request a demo';
-            ctaButtonContainer.appendChild(ctaButton);
-            footerItemNode.appendChild(ctaButtonContainer);
+            if (self.options.ctaButton.enabled) {
+                let ctaButtonContainer = document.createElement("div");
+                ctaButtonContainer.setAttribute('class', self.id + '__footer-item-column column');
+                ctaButtonContainer.style.transitionDelay = footerItemTransitionDelay + 's';
+                let ctaButton = document.createElement("a");
+                ctaButton.setAttribute('class', self.setClass('__btn-cta'));
+                ctaButton.innerText = self.options.ctaButton.text;
+                ctaButton.href = self.options.ctaButton.href;
+                ctaButtonContainer.appendChild(ctaButton);
+                footerItemNode.appendChild(ctaButtonContainer);
+            }
+
             footerItemsContainer.appendChild(footerItemNode);
 
             let slideContainer = document.createElement("section");
@@ -148,6 +159,7 @@ class JsCarousel {
                 imageNode.setAttribute('class', self.id + '__image ' + self.id + '__image--' + i);
                 imageNode.style.left = imageLeft + 'px';
                 imageNode.style.top = imageTop + 'px';
+                imageNode.style.height = self.options.imageHeight + 'px';
                 imageNode.style.zIndex = (self.images.length - i).toString();
                 imagesContainer.appendChild(imageNode);
 
