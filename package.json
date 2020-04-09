@@ -1,7 +1,7 @@
 {
-  "name": "proteus-carousel",
+  "name": "jscarousel",
   "version": "1.0.0",
-  "description": "Proteus Carousel",
+  "description": "Carousel written in pure JavaScript.",
   "main": "index.js",
   "scripts": {
     "watch:sass": "node-sass sass/main.scss css/style.css -w",
