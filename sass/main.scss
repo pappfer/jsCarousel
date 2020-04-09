@@ -172,4 +172,37 @@
     &__image {
         position: absolute;
     }
+
+    &__bottom-text-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        hr {
+            width: 100%;
+            border: 0;
+        }
+    }
+
+    &__bottom-text {
+        flex: 0 1 20%;
+        text-align: center;
+        color: var(--color-dark-blue);
+        font-weight: bold;
+
+        &:before {
+            content: '';
+            opacity: 0;
+            padding-right: 0;
+            transition: all .5s ease-in-out;
+        }
+
+        &.active:before {
+            content: "\000BB ";
+            opacity: 1;
+            padding-right: 5px;
+            font-weight: bold;
+            vertical-align: top;
+        }
+    }
 }

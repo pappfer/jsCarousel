@@ -19,159 +19,172 @@
 <script src="https://cdn.jsdelivr.net/web-animations/latest/web-animations.min.js"></script>
 <script src="js/jsCarousel.js"></script>
 <script>
-    let carouselData = [
-        {
-            title: 'Simply the most advanced Data Privacy product available',
-            src: 'img/carousel/1.png',
-            url: '#',
-            description: 'Express, Enterprise and Premium services allow you to quickly and simply keep your privacy program on track. From company wide privacy audits to detailed risk assessments and pro-active breach protection, we have a solution that will suit your needs.',
-            footerItems: [
-                'Express & Enterprise versions',
-                'Pro-Active breach Protection',
-                'Most integrated',
-                'Free privacy research',
-                'Most comprehensive',
-                'Flexible reporting',
-            ],
-        },
-        {
-            title: 'Free to use Privacy research',
-            src: 'img/carousel/2.png',
-            url: '#',
-            description: 'We bring privacy legislation from around the world, fully cross referenced by keyword, privacy topic, legal category & reporting groups',
-            footerItems: [
-                'Free privacy research',
-                '300+ Privacy standards',
-                'EMEA-US-ASIA-AF-OC-SA',
-            ],
-        },
-        {
-            title: 'Library of privacy controls',
-            src: 'img/carousel/3.png',
-            url: '#',
-            description: 'View the legislation as it was drafted, by chapter, section, article and control.',
-            footerItems: [
-                'Library of privacy controls',
-                'Search by keywords',
-                'Cross reference',
-            ],
-        },
-        {
-            title: 'Compare privacy legislation',
-            src: 'img/carousel/4.png',
-            url: '#',
-            description: 'Select multiple standards and search by privacy keywords and topics',
-            footerItems: [
-                'Compare legislation',
-                'Multiple keywords',
-                'Cross reference',
-                'Privacy topics'
-            ],
-        },
-        {
-            title: 'Breach/ROI calculator',
-            src: 'img/carousel/5.png',
-            url: '#',
-            description: 'Model the impact of a data breach with real world examples of breaches in your industry',
-            footerItems: [
-                'Model breaches & fines',
-                'Assess impact',
-                'Industry research',
-            ],
-        },
-        {
-            title: 'Track latest breaches and fines',
-            src: 'img/carousel/6.png',
-            url: '#',
-            description: 'We monitor the latest breaches and regulatory fines and alert you based on your interest',
-            footerItems: [
-                'Free privacy research',
-                'RSS feed',
-                'Search by topic',
-            ],
-        },
-        {
-            title: 'Concise management reports',
-            src: 'img/carousel/7.png',
-            url: '#',
-            description: 'We collate data privacy statistics and can report by location, geographical region, division & department.',
-            footerItems: [
-                'Regular board reports',
-                'Concise statistics',
-                'View trends',
-            ],
-        },
-        {
-            title: 'Visualise international and EU boarder transits',
-            src: 'img/carousel/8.png',
-            url: '#',
-            description: 'We track all border transits and highlight which privacy legislation you are exposed to.',
-            footerItems: [
-                'International transits',
-                'EU boarder transits',
-                'Visualise data flows',
-            ],
-        },
-        {
-            title: 'How is my data linked?',
-            src: 'img/carousel/9.png',
-            url: '#',
-            description: 'A picture speaks a thousand words.  We can see what is linked to what, how data is used and who uses it with one picture',
-            footerItems: [
-                'Where’s my data?',
-                'How’s it used',
-                'What is connected to what',
-            ],
-        },
-        {
-            title: 'Flexible reporting',
-            src: 'img/carousel/10.png',
-            url: '#',
-            description: 'We can answer any question an auditor would ask, by process, application, asset or data.  We have many reports and all can be exported in MS Excel, pdf, CSV at the click of a button',
-            footerItems: [
-                'Risk assessed reports',
-                'Export in many formats',
-                'Filter for risk',
-            ],
-        },
-        {
-            title: 'No code, same day setup SAR and Consumer Request portal',
-            src: 'img/carousel/11.png',
-            url: '#',
-            description: 'One portal & one interface for all your privacy legislation consumer requests. CCPA, GDPR, LGPD ……..',
-            footerItems: [
-                'One SAR interface',
-                'Online consumer portal',
-                'Secure messaging center',
-            ],
-        },
-        {
-            title: 'Breach notification in the format of your regulatory authority',
-            src: 'img/carousel/12.png',
-            url: '#',
-            description: 'California, ICO, CNIL, BDGS, PDPA, CNPD, LGPD.. Pick your format.  We support them all',
-            footerItems: [
-                'Format for authority',
-                'CNIL, ICO, CCPA, LGPD…',
-                '72 hour notification',
-            ],
-        },
-        {
-            title: '100+ Languages supported',
-            src: 'img/carousel/13.png',
-            url: '#',
-            description: 'English, American, Braziliarno, Singlish, Arabic rtl, Chinese, Japanese, Greek.. Over 100 languages supporting including non-Latin based',
-            footerItems: [
-                '100+ languages',
-                'Chinese, Japanese, Arabic..',
-                'Non-Latin lanaguages',
-            ],
-        },
-    ];
+  let carouselData = [
+    {
+      title: 'Simply the most advanced Data Privacy product available',
+      src: 'img/carousel/1.png',
+      url: '#',
+      description: 'Express, Enterprise and Premium services allow you to quickly and simply keep your privacy program on track. From company wide privacy audits to detailed risk assessments and pro-active breach protection, we have a solution that will suit your needs.',
+      footerItems: [
+        'Express & Enterprise versions',
+        'Pro-Active breach Protection',
+        'Most integrated',
+        'Free privacy research',
+        'Most comprehensive',
+        'Flexible reporting',
+      ],
+      bottomText: 'Simple surveys',
+    },
+    {
+      title: 'Free to use Privacy research',
+      src: 'img/carousel/2.png',
+      url: '#',
+      description: 'We bring privacy legislation from around the world, fully cross referenced by keyword, privacy topic, legal category & reporting groups',
+      footerItems: [
+        'Free privacy research',
+        '300+ Privacy standards',
+        'EMEA-US-ASIA-AF-OC-SA',
+      ],
+      bottomText: 'PIA/DPIA assessments',
+    },
+    {
+      title: 'Library of privacy controls',
+      src: 'img/carousel/3.png',
+      url: '#',
+      description: 'View the legislation as it was drafted, by chapter, section, article and control.',
+      footerItems: [
+        'Library of privacy controls',
+        'Search by keywords',
+        'Cross reference',
+      ],
+      bottomText: 'Data register',
+    },
+    {
+      title: 'Compare privacy legislation',
+      src: 'img/carousel/4.png',
+      url: '#',
+      description: 'Select multiple standards and search by privacy keywords and topics',
+      footerItems: [
+        'Compare legislation',
+        'Multiple keywords',
+        'Cross reference',
+        'Privacy topics',
+      ],
+      bottomText: 'Privacy-by-Design',
+    },
+    {
+      title: 'Breach/ROI calculator',
+      src: 'img/carousel/5.png',
+      url: '#',
+      description: 'Model the impact of a data breach with real world examples of breaches in your industry',
+      footerItems: [
+        'Model breaches & fines',
+        'Assess impact',
+        'Industry research',
+      ],
+      bottomText: 'Easy reporting',
+    },
+    {
+      title: 'Track latest breaches and fines',
+      src: 'img/carousel/6.png',
+      url: '#',
+      description: 'We monitor the latest breaches and regulatory fines and alert you based on your interest',
+      footerItems: [
+        'Free privacy research',
+        'RSS feed',
+        'Search by topic',
+      ],
+      bottomText: 'No code consumer requests',
+    },
+    {
+      title: 'Concise management reports',
+      src: 'img/carousel/7.png',
+      url: '#',
+      description: 'We collate data privacy statistics and can report by location, geographical region, division & department.',
+      footerItems: [
+        'Regular board reports',
+        'Concise statistics',
+        'View trends',
+      ],
+      bottomText: '3rd Party audits',
+    },
+    {
+      title: 'Visualise international and EU boarder transits',
+      src: 'img/carousel/8.png',
+      url: '#',
+      description: 'We track all border transits and highlight which privacy legislation you are exposed to.',
+      footerItems: [
+        'International transits',
+        'EU boarder transits',
+        'Visualise data flows',
+      ],
+      bottomText: 'Breach notification',
+    },
+    {
+      title: 'How is my data linked?',
+      src: 'img/carousel/9.png',
+      url: '#',
+      description: 'A picture speaks a thousand words.  We can see what is linked to what, how data is used and who uses it with one picture',
+      footerItems: [
+        'Where’s my data?',
+        'How’s it used',
+        'What is connected to what',
+      ],
+      bottomText: 'Security training',
+    },
+    {
+      title: 'Flexible reporting',
+      src: 'img/carousel/10.png',
+      url: '#',
+      description: 'We can answer any question an auditor would ask, by process, application, asset or data.  We have many reports and all can be exported in MS Excel, pdf, CSV at the click of a button',
+      footerItems: [
+        'Risk assessed reports',
+        'Export in many formats',
+        'Filter for risk',
+      ],
+      bottomText: 'Cookie scanning',
+    },
+    {
+      title: 'No code, same day setup SAR and Consumer Request portal',
+      src: 'img/carousel/11.png',
+      url: '#',
+      description: 'One portal & one interface for all your privacy legislation consumer requests. CCPA, GDPR, LGPD ……..',
+      footerItems: [
+        'One SAR interface',
+        'Online consumer portal',
+        'Secure messaging center',
+      ],
+      bottomText: '100+ languages',
+    },
+    {
+      title: 'Breach notification in the format of your regulatory authority',
+      src: 'img/carousel/12.png',
+      url: '#',
+      description: 'California, ICO, CNIL, BDGS, PDPA, CNPD, LGPD.. Pick your format.  We support them all',
+      footerItems: [
+        'Format for authority',
+        'CNIL, ICO, CCPA, LGPD…',
+        '72 hour notification',
+      ],
+      bottomText: 'Pro-active breach protection',
+    },
+    {
+      title: '100+ Languages supported',
+      src: 'img/carousel/13.png',
+      url: '#',
+      description: 'English, American, Braziliarno, Singlish, Arabic rtl, Chinese, Japanese, Greek.. Over 100 languages supporting including non-Latin based',
+      footerItems: [
+        '100+ languages',
+        'Chinese, Japanese, Arabic..',
+        'Non-Latin lanaguages',
+      ],
+      bottomText: '',
+    },
+  ];
 
-    let jsCarousel = new JsCarousel('jsCarousel', carouselData, {
-        title: "Proteus®NextGen Data Privacy™",
-    });
+  let jsCarousel = new JsCarousel('jsCarousel', carouselData, {
+    title: 'Proteus®NextGen Data Privacy™',
+  });
 </script>
 </body>
 
