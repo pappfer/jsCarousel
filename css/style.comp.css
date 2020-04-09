@@ -126,7 +126,8 @@
     justify-content: center; }
     .jsCarousel__bottom-text-container hr {
       width: 100%;
-      border: 0; }
+      border: 0;
+      margin: 7px; }
   .jsCarousel__bottom-text {
     flex: 0 1 20%;
     text-align: center;
