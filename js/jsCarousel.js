@@ -110,9 +110,14 @@ class JsCarousel {
                 self.play();
             });
 
+            let bottomTextClass = self.setClass('__bottom-text' + (i === 0 ? ' active' : ''));
+            if (self.images[i].bottomText === '') {
+                bottomTextClass += ' ' + self.setClass('__bottom-text--hidden');
+            }
+
             let bottomTextNode = document.createElement("div");
             bottomTextNode.setAttribute('id', self.setId('__bottom-text--' + i));
-            bottomTextNode.setAttribute('class', self.setClass('__bottom-text' + (i === 0 ? ' active' : '')));
+            bottomTextNode.setAttribute('class', bottomTextClass);
             bottomTextNode.innerText = self.images[i].bottomText;
             bottomTextContainer.appendChild(bottomTextNode);
 
