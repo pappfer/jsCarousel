@@ -16,7 +16,11 @@ class JsCarousel {
             ctaButton: {
                 enabled: true,
                 text: 'Request a demo',
-                href: '#contact'
+                href: '#contact',
+                dataAttributes: {
+                    toggle: 'modal',
+                    target: '#contact-modal'
+                }
             }
         }, options);
 
@@ -147,6 +151,13 @@ class JsCarousel {
                 ctaButton.setAttribute('class', self.setClass('__btn-cta'));
                 ctaButton.innerText = self.options.ctaButton.text;
                 ctaButton.href = self.options.ctaButton.href;
+
+                if (self.options.ctaButton.dataAttributes) {
+                    Object.keys(self.options.ctaButton.dataAttributes).forEach(function(dataKey) {
+                        ctaButton.dataset[dataKey] = self.options.ctaButton.dataAttributes[dataKey];
+                    });
+                }
+
                 ctaButtonContainer.appendChild(ctaButton);
                 footerItemNode.appendChild(ctaButtonContainer);
             }
