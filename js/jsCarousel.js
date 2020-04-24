@@ -219,27 +219,6 @@ class JsCarousel {
             }
         });
 
-        /*if (this.options.displayToggleButton) {
-            let toggleButtonContainer = document.createElement("div");
-            dotsContainer.appendChild(toggleButtonContainer);
-            let toggleButton = document.createElement("button");
-            toggleButton.setAttribute('id', this.setId('__toggle-button'));
-            toggleButton.setAttribute('class', this.setId('__btn'));
-            toggleButton.innerText = 'Pause';
-            toggleButton.addEventListener("click", function () {
-                for (let i = 0; i <= self.options.imagesToShow; i++) {
-                    if (self.animations[i].playState === "running") {
-                        self.animations[i].pause();
-                        toggleButton.innerText = 'Play';
-                    } else {
-                        self.animations[i].play();
-                        toggleButton.innerText = 'Pause';
-                    }
-                }
-            });
-            toggleButtonContainer.appendChild(toggleButton);
-        }*/
-
         if (this.animations instanceof Array && typeof this.animations[0] === "object") {
             let self = this;
             this.animations[0].onfinish = function () {
