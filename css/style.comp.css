@@ -22,6 +22,10 @@
     .jsCarousel__content h1 {
       font-size: 34px;
       font-weight: 700; }
+  .jsCarousel__url {
+    float: right;
+    padding-top: 10px;
+    font-size: 14px; }
   .jsCarousel__footer {
     margin-top: 20px; }
   .jsCarousel__images {

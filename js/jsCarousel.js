@@ -182,6 +182,19 @@ class JsCarousel {
             slideContent.innerHTML = self.images[i].description;
             slideContainer.appendChild(slideContent);
 
+            if (self.images[i].url !== '' && self.images[i].url !== '#') {
+                let slideUrlLinkText = document.createTextNode('...read more');
+
+                let slideUrlLink = document.createElement("a");
+                slideUrlLink.setAttribute('href', self.images[i].url);
+                slideUrlLink.appendChild(slideUrlLinkText);
+
+                let slideUrl = document.createElement("div");
+                slideUrl.setAttribute('class', self.setClass('__url'));
+                slideUrl.appendChild(slideUrlLink);
+                slideContainer.appendChild(slideUrl);
+            }
+
             if (i <= self.options.imagesToShow) {
                 let imageNode = document.createElement("img");
                 imageNode.setAttribute('src', self.images[i].src);
