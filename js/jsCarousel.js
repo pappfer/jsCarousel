@@ -93,6 +93,7 @@ class JsCarousel {
         let endOpacity = 1.0;
         let imageLeft = 100;
         let imageTop = 0;
+        let bottomTextCount = 0;
 
         Object.keys(this.images).forEach(function (value, i) {
             let linkNode = document.createElement("a");
@@ -114,20 +115,20 @@ class JsCarousel {
                 self.play();
             });
 
-            let bottomTextClass = self.setClass('__bottom-text' + (i === 0 ? ' active' : ''));
-            if (self.images[i].bottomText === '') {
-                bottomTextClass += ' ' + self.setClass('__bottom-text--hidden');
-            }
+            if (self.images[i].bottomText !== '') {
+                let bottomTextClass = self.setClass('__bottom-text' + (i === 0 ? ' active' : ''));
+                let bottomTextNode = document.createElement("div");
+                bottomTextNode.setAttribute('id', self.setId('__bottom-text--' + i));
+                bottomTextNode.setAttribute('class', bottomTextClass);
+                bottomTextNode.innerText = self.images[i].bottomText;
+                bottomTextContainer.appendChild(bottomTextNode);
 
-            let bottomTextNode = document.createElement("div");
-            bottomTextNode.setAttribute('id', self.setId('__bottom-text--' + i));
-            bottomTextNode.setAttribute('class', bottomTextClass);
-            bottomTextNode.innerText = self.images[i].bottomText;
-            bottomTextContainer.appendChild(bottomTextNode);
+                if (bottomTextCount % 4 === 3) {
+                    let bottomTextLineBreak = document.createElement("hr");
+                    bottomTextContainer.appendChild(bottomTextLineBreak);
+                }
 
-            if (i % 4 === 3) {
-                let bottomTextLineBreak = document.createElement("hr");
-                bottomTextContainer.appendChild(bottomTextLineBreak);
+                bottomTextCount++;
             }
 
             let footerItemNode = document.createElement("div");
