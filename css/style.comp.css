@@ -112,9 +112,8 @@
   .jsCarousel__btn-cta-container {
     position: absolute;
     bottom: 20px;
-    display: flex;
-    justify-content: center;
-    width: 100%; }
+    width: 100%;
+    text-align: left; }
   .jsCarousel__btn-cta {
     background-color: #1ab394;
     color: #FFFFFF;
