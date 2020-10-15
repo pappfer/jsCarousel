@@ -15,12 +15,12 @@ class JsCarousel {
             imageHeight: 350,
             ctaButton: {
                 enabled: true,
-                text: 'Request a demo',
-                href: '#contact',
-                dataAttributes: {
+                text: 'REQUEST A DEMO',
+                href: '/contact'
+                /*dataAttributes: {
                     toggle: 'modal',
                     target: '#contact-modal'
-                }
+                }*/
             }
         }, options);
 
@@ -95,6 +95,22 @@ class JsCarousel {
         let imageTop = 0;
         let bottomTextCount = 0;
 
+        let ctaButtonContainer = document.createElement('div');
+        ctaButtonContainer.setAttribute('class', self.setClass('__btn-cta-container'));
+        document.getElementById('jsCarousel__content').appendChild(ctaButtonContainer);
+        let ctaButton = document.createElement('a');
+        ctaButton.setAttribute('class', self.setClass('__btn-cta'));
+        ctaButton.innerText = self.options.ctaButton.text;
+        ctaButton.href = self.options.ctaButton.href;
+
+        if (self.options.ctaButton.dataAttributes) {
+            Object.keys(self.options.ctaButton.dataAttributes).forEach(function(dataKey) {
+                ctaButton.dataset[dataKey] = self.options.ctaButton.dataAttributes[dataKey];
+            });
+        }
+
+        ctaButtonContainer.appendChild(ctaButton);
+
         Object.keys(this.images).forEach(function (value, i) {
             let linkNode = document.createElement("a");
             let linkId = self.id + '__link--' + i;
@@ -143,25 +159,6 @@ class JsCarousel {
                 footerItemNode.appendChild(footerItemColumnNode);
                 footerItemTransitionDelay += .2;
             });
-
-            if (self.options.ctaButton.enabled) {
-                let ctaButtonContainer = document.createElement("div");
-                ctaButtonContainer.setAttribute('class', self.id + '__footer-item-column column');
-                ctaButtonContainer.style.transitionDelay = footerItemTransitionDelay + 's';
-                let ctaButton = document.createElement("a");
-                ctaButton.setAttribute('class', self.setClass('__btn-cta'));
-                ctaButton.innerText = self.options.ctaButton.text;
-                ctaButton.href = self.options.ctaButton.href;
-
-                if (self.options.ctaButton.dataAttributes) {
-                    Object.keys(self.options.ctaButton.dataAttributes).forEach(function(dataKey) {
-                        ctaButton.dataset[dataKey] = self.options.ctaButton.dataAttributes[dataKey];
-                    });
-                }
-
-                ctaButtonContainer.appendChild(ctaButton);
-                footerItemNode.appendChild(ctaButtonContainer);
-            }
 
             footerItemsContainer.appendChild(footerItemNode);
 
@@ -289,7 +286,9 @@ class JsCarousel {
         nextDot.classList.add('active');
         nextSlide.classList.add('active');
         nextFooterItem.classList.add('active');
-        nextBottomText.classList.add('active');
+        if (nextBottomText !== null) {
+            nextBottomText.classList.add('active');
+        }
 
         let imageIndex = this.currentImage;
 
