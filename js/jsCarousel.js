@@ -37,6 +37,7 @@ class JsCarousel {
             //iterations: Infinity
         };
 
+        document.getElementById(selector).innerHTML = '';
         this.container.classList.add('jsCarousel');
 
         let self = this;
