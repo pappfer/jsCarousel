@@ -39,6 +39,8 @@ class JsCarousel {
 
         document.getElementById(selector).innerHTML = '';
         this.container.classList.add('jsCarousel');
+        this.container.classList.add('animated');
+        this.container.classList.add('fadeInUp');
 
         let self = this;
 
