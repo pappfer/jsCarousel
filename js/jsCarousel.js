@@ -115,14 +115,6 @@ class JsCarousel {
                 self.updateSlide();
             });
 
-            document.getElementById(linkId).addEventListener('mouseover', function () {
-                self.gotoSlide(i);
-            });
-
-            document.getElementById(linkId).addEventListener('mouseleave', function () {
-                self.play();
-            });
-
             let slideContainer = document.createElement("section");
             slideContainer.setAttribute('id', self.setId('__slide--' + i));
             slideContainer.setAttribute('class', self.setClass('__slide'));
@@ -262,7 +254,7 @@ class JsCarousel {
                 });
             }
         } else {
-            this.pause();
+            //this.pause();
         }
     }
 
