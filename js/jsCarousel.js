@@ -75,20 +75,10 @@ class JsCarousel {
         slideTitle.innerText = self.options.title;
         contentContainer.appendChild(slideTitle);
 
-        let footerItemsContainer = document.createElement("div");
-        footerItemsContainer.setAttribute('id', this.setId('__footer-items'));
-        footerItemsContainer.setAttribute('class', this.setClass('__footer-items'));
-        footerContainer.appendChild(footerItemsContainer);
-
         let dotsContainer = document.createElement("div");
         dotsContainer.setAttribute('id', this.setId('__dots-container'));
         dotsContainer.setAttribute('class', this.setClass('__dots-container'));
-        footerContainer.appendChild(dotsContainer);
-
-        let bottomTextContainer = document.createElement("div");
-        bottomTextContainer.setAttribute('id', this.setId('__bottom-text-container'));
-        bottomTextContainer.setAttribute('class', this.setClass('__bottom-text-container'));
-        footerContainer.appendChild(bottomTextContainer);
+        contentContainer.appendChild(dotsContainer);
 
         let startScale = 1.0;
         let endScale = 1.2;
@@ -96,7 +86,6 @@ class JsCarousel {
         let endOpacity = 1.0;
         let imageLeft = 100;
         let imageTop = 0;
-        let bottomTextCount = 0;
 
         let ctaButtonContainer = document.createElement('div');
         ctaButtonContainer.setAttribute('class', self.setClass('__btn-cta-container'));
@@ -133,37 +122,6 @@ class JsCarousel {
             document.getElementById(linkId).addEventListener('mouseleave', function () {
                 self.play();
             });
-
-            if (self.images[i].bottomText !== '') {
-                let bottomTextClass = self.setClass('__bottom-text' + (i === 0 ? ' active' : ''));
-                let bottomTextNode = document.createElement("div");
-                bottomTextNode.setAttribute('id', self.setId('__bottom-text--' + i));
-                bottomTextNode.setAttribute('class', bottomTextClass);
-                bottomTextNode.innerText = self.images[i].bottomText;
-                bottomTextContainer.appendChild(bottomTextNode);
-
-                if (bottomTextCount % 4 === 3) {
-                    let bottomTextLineBreak = document.createElement("hr");
-                    bottomTextContainer.appendChild(bottomTextLineBreak);
-                }
-
-                bottomTextCount++;
-            }
-
-            let footerItemNode = document.createElement("div");
-            footerItemNode.setAttribute('id', self.setId('__footer-item--' + i));
-            footerItemNode.setAttribute('class', self.id + '__footer-item' + (i === 0 ? ' active' : ''));
-            let footerItemTransitionDelay = .4;
-            self.images[i].footerItems.forEach(function(footerItemValue, footerItemIndex) {
-                let footerItemColumnNode = document.createElement("div");
-                footerItemColumnNode.setAttribute('class', self.id + '__footer-item-column column');
-                footerItemColumnNode.innerHTML = footerItemValue;
-                footerItemColumnNode.style.transitionDelay = footerItemTransitionDelay + 's';
-                footerItemNode.appendChild(footerItemColumnNode);
-                footerItemTransitionDelay += .2;
-            });
-
-            footerItemsContainer.appendChild(footerItemNode);
 
             let slideContainer = document.createElement("section");
             slideContainer.setAttribute('id', self.setId('__slide--' + i));
@@ -250,8 +208,6 @@ class JsCarousel {
     updateSlide() {
         let activeSlide = document.getElementsByClassName(this.id + '__slide active');
         let activeDot = document.getElementsByClassName(this.id + '__link active');
-        let activeFooterItem = document.getElementsByClassName(this.id + '__footer-item active');
-        let activeBottomText = document.getElementsByClassName(this.id + '__bottom-text active');
 
         for (let dot of activeDot) {
             dot.classList.remove('active');
@@ -261,18 +217,8 @@ class JsCarousel {
             slide.classList.remove('active');
         }
 
-        for (let footerItem of activeFooterItem) {
-            footerItem.classList.remove('active');
-        }
-
-        for (let bottomText of activeBottomText) {
-            bottomText.classList.remove('active');
-        }
-
         let nextDot = document.getElementById(this.id + '__link--' + this.currentImage);
         let nextSlide = document.getElementById(this.id + '__slide--' + this.currentImage);
-        let nextFooterItem = document.getElementById(this.id + '__footer-item--' + this.currentImage);
-        let nextBottomText = document.getElementById(this.id + '__bottom-text--' + this.currentImage);
 
         if (this.gotoImage === this.currentImage) {
             for (let j = 0; j <= this.options.imagesToShow; j++) {
@@ -288,10 +234,6 @@ class JsCarousel {
 
         nextDot.classList.add('active');
         nextSlide.classList.add('active');
-        nextFooterItem.classList.add('active');
-        if (nextBottomText !== null) {
-            nextBottomText.classList.add('active');
-        }
 
         let imageIndex = this.currentImage;
 
