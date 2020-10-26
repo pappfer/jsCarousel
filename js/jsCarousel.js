@@ -151,20 +151,22 @@ class JsCarousel {
 
             let slideContent = document.createElement("div");
             slideContent.innerHTML = self.images[i].description;
-            slideContainer.appendChild(slideContent);
 
             if (self.images[i].url !== '' && self.images[i].url !== '#') {
-                let slideUrlLinkText = document.createTextNode('...read more');
+                let slideUrlLinkText = document.createTextNode(' ... read more');
 
                 let slideUrlLink = document.createElement("a");
                 slideUrlLink.setAttribute('href', self.images[i].url);
                 slideUrlLink.appendChild(slideUrlLinkText);
 
-                let slideUrl = document.createElement("div");
+                slideContent.appendChild(slideUrlLink);
+                /*let slideUrl = document.createElement("div");
                 slideUrl.setAttribute('class', self.setClass('__url'));
                 slideUrl.appendChild(slideUrlLink);
-                slideContainer.appendChild(slideUrl);
+                slideContent.appendChild(slideUrl);*/
             }
+
+            slideContainer.appendChild(slideContent);
 
             if (i <= self.options.imagesToShow) {
                 let imageNode = document.createElement("img");
@@ -203,11 +205,17 @@ class JsCarousel {
             }
         });
 
-        /*let playButton = document.createElement("img");
+        /*let playButton = document.createElement("a");
+        let playButtonId = this.setId('__play-button');
         playButton.setAttribute('class', this.setClass('__play-button'));
-        //playButton.setAttribute('src', imgPlay);
+        playButton.innerText = 'play';
+        //playButton.setAttribute('src', imgPlay);ÍÍÍÍÍÍÍÍÍÍÍÍÍ
         dotsContainer.appendChild(playButton);
-        */
+
+        playButton.addEventListener('click', function () {
+            self.play();
+        });*/
+
         if (this.animations instanceof Array && typeof this.animations[0] === "object") {
             let self = this;
             this.animations[0].onfinish = function () {
