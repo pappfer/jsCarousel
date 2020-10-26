@@ -36,7 +36,7 @@
     position: relative; }
   .jsCarousel__dots-container {
     position: absolute;
-    bottom: 40px;
+    bottom: 25%;
     display: flex;
     margin: 20px 0;
     justify-content: center;
@@ -83,7 +83,7 @@
     background-image: linear-gradient(to right bottom, var(--color-light-blue), var(--color-dark-blue)); }
   .jsCarousel__btn-cta-container {
     position: absolute;
-    bottom: 10px;
+    bottom: 15%;
     width: 100%;
     text-align: center; }
   .jsCarousel__btn-cta {
