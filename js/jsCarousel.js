@@ -1,4 +1,3 @@
-
 class JsCarousel {
     constructor(selector, data, options = {}) {
         this.id = 'jsCarousel';
@@ -111,8 +110,9 @@ class JsCarousel {
             dotsContainer.appendChild(linkNode);
 
             document.getElementById(linkId).addEventListener('click', function () {
-                self.currentImage = i;
-                self.updateSlide();
+                //self.currentImage = i;
+                //self.updateSlide();
+                self.gotoSlide(i);
             });
 
             let slideContainer = document.createElement("section");
@@ -182,6 +182,11 @@ class JsCarousel {
                 imageTop -= self.options.imageOffsetY;
             }
         });
+
+        let playButton = document.createElement("img");
+        playButton.setAttribute('class', this.setClass('__play-button'));
+        //playButton.setAttribute('src', imgPlay);
+        dotsContainer.appendChild(playButton);
 
         if (this.animations instanceof Array && typeof this.animations[0] === "object") {
             let self = this;
@@ -254,7 +259,7 @@ class JsCarousel {
                 });
             }
         } else {
-            //this.pause();
+            this.pause();
         }
     }
 
