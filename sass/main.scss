@@ -29,7 +29,7 @@
     }
 
     &__content {
-        flex: 0 0 50%;
+        flex: 1;
         position: relative;
 
         h1 {
@@ -49,7 +49,7 @@
     }
 
     &__images {
-        flex: 0 0 50%;
+        flex: 1;
         position: relative;
     }
 

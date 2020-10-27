@@ -20,7 +20,7 @@
   .jsCarousel__body {
     display: flex; }
   .jsCarousel__content {
-    flex: 0 0 50%;
+    flex: 1;
     position: relative; }
     .jsCarousel__content h1 {
       font-size: 34px;
@@ -32,7 +32,7 @@
   .jsCarousel__footer {
     margin-top: 20px; }
   .jsCarousel__images {
-    flex: 0 0 50%;
+    flex: 1;
     position: relative; }
   .jsCarousel__dots-container {
     position: absolute;
