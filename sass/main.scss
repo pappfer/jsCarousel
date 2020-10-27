@@ -91,19 +91,19 @@
         justify-content: center;
         align-items: center;
         position: absolute;
+        width: 100%;
         top: 0;
         left:0;
-        right:0;
         margin-left:auto;
         margin-right:auto;
 
         .column {
             visibility: hidden;
             z-index: -1;
-            opacity: 0.5;
-            transform: scale(.5);
+            opacity: 0;
+            transform: scale(.9);
             margin-left: 20px;
-            transition: all .4s linear;
+            transition: all .3s linear;
         }
 
         &.active {
@@ -112,7 +112,7 @@
                 z-index: 1;
                 opacity: 1;
                 vertical-align: middle;
-                transform: scale(1);
+                //transform: scale(1);
                 margin-left: 0;
             }
         }
