@@ -286,8 +286,6 @@ class JsCarousel {
     gotoSlide(i) {
         this.gotoImage = i;
 
-        console.log(this.currentImage, this.gotoImage);
-
         if (this.currentImage !== this.gotoImage) {
             for (let j = 0; j <= this.options.imagesToShow; j++) {
                 this.animations[j].effect.updateTiming({

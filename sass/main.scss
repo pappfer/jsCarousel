@@ -102,8 +102,9 @@
             z-index: -1;
             opacity: 0;
             transform: scale(.9);
-            margin-left: 20px;
+            margin-left: 5px;
             transition: all .3s linear;
+            vertical-align: middle;
         }
 
         &.active {
@@ -111,7 +112,6 @@
                 visibility: visible;
                 z-index: 1;
                 opacity: 1;
-                vertical-align: middle;
                 //transform: scale(1);
                 margin-left: 0;
             }
