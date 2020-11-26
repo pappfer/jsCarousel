@@ -118,14 +118,12 @@
   .jsCarousel__btn-cta-container, .jsCarousel__btn-cta2-container {
     position: absolute;
     bottom: 13%;
-    text-align: center; }
-  .jsCarousel__btn-cta-container {
-    left: 0; }
-  .jsCarousel__btn-cta2-container {
-    left: 200px; }
+    text-align: center;
+    width: 100%; }
   .jsCarousel__btn-cta {
     background-color: #1ab394;
     color: #FFFFFF;
+    margin: 0 10px;
     font-size: 16px;
     padding: 10px 16px;
     font-weight: 600;
@@ -133,7 +131,6 @@
     text-decoration: none;
     white-space: nowrap;
     display: inline-block;
-    margin-bottom: 0;
     text-align: center;
     vertical-align: middle;
     -ms-touch-action: manipulation;

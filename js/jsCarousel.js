@@ -110,11 +110,6 @@ class JsCarousel {
             });
         }
 
-        ctaButtonContainer.appendChild(ctaButton);
-
-        let ctaButton2Container = document.createElement('div');
-        ctaButton2Container.setAttribute('class', self.setClass('__btn-cta2-container'));
-        document.getElementById('jsCarousel__content').appendChild(ctaButton2Container);
         let ctaButton2 = document.createElement('a');
         ctaButton2.setAttribute('class', self.setClass('__btn-cta'));
         ctaButton2.innerText = self.options.ctaButton2.text;
@@ -126,7 +121,8 @@ class JsCarousel {
             });
         }
 
-        ctaButton2Container.appendChild(ctaButton2);
+        ctaButtonContainer.appendChild(ctaButton);
+        ctaButtonContainer.appendChild(ctaButton2);
 
         Object.keys(this.images).forEach(function (value, i) {
             let linkNode = document.createElement("a");

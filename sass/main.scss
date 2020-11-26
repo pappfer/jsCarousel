@@ -169,19 +169,13 @@
         position: absolute;
         bottom: 13%;
         text-align: center;
-    }
-
-    &__btn-cta-container {
-        left: 0;
-    }
-
-    &__btn-cta2-container {
-        left: 200px;
+        width: 100%;
     }
 
     &__btn-cta {
         background-color: #1ab394;
         color: #FFFFFF;
+        margin: 0 10px;
         font-size: 16px;
         padding: 10px 16px;
         font-weight: 600;
@@ -189,7 +183,6 @@
         text-decoration: none;
         white-space: nowrap;
         display: inline-block;
-        margin-bottom: 0;
         text-align: center;
         vertical-align: middle;
         -ms-touch-action: manipulation;
