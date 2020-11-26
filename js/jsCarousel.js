@@ -20,6 +20,11 @@ class JsCarousel {
                     toggle: 'modal',
                     target: '#contact-modal'
                 }*/
+            },
+            ctaButton2: {
+                enabled: true,
+                text: 'PRODUCT VERSIONS',
+                href: '/site/product-versions'
             }
         }, options);
 
@@ -106,6 +111,22 @@ class JsCarousel {
         }
 
         ctaButtonContainer.appendChild(ctaButton);
+
+        let ctaButton2Container = document.createElement('div');
+        ctaButton2Container.setAttribute('class', self.setClass('__btn-cta2-container'));
+        document.getElementById('jsCarousel__content').appendChild(ctaButton2Container);
+        let ctaButton2 = document.createElement('a');
+        ctaButton2.setAttribute('class', self.setClass('__btn-cta'));
+        ctaButton2.innerText = self.options.ctaButton2.text;
+        ctaButton2.href = self.options.ctaButton2.href;
+
+        if (self.options.ctaButton2.dataAttributes) {
+            Object.keys(self.options.ctaButton2.dataAttributes).forEach(function(dataKey) {
+                ctaButton2.dataset[dataKey] = self.options.ctaButton2.dataAttributes[dataKey];
+            });
+        }
+
+        ctaButton2Container.appendChild(ctaButton2);
 
         Object.keys(this.images).forEach(function (value, i) {
             let linkNode = document.createElement("a");

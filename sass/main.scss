@@ -165,11 +165,18 @@
         background-image: linear-gradient(to right bottom, var(--color-light-blue), var(--color-dark-blue));
     }
 
-    &__btn-cta-container {
+    &__btn-cta-container, &__btn-cta2-container {
         position: absolute;
         bottom: 13%;
-        width: 100%;
         text-align: center;
+    }
+
+    &__btn-cta-container {
+        left: 0;
+    }
+
+    &__btn-cta2-container {
+        left: 200px;
     }
 
     &__btn-cta {

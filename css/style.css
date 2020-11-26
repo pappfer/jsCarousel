@@ -115,11 +115,14 @@
     border-radius: 5px;
     font-size: 14px;
     background-image: linear-gradient(to right bottom, var(--color-light-blue), var(--color-dark-blue)); }
-  .jsCarousel__btn-cta-container {
+  .jsCarousel__btn-cta-container, .jsCarousel__btn-cta2-container {
     position: absolute;
     bottom: 13%;
-    width: 100%;
     text-align: center; }
+  .jsCarousel__btn-cta-container {
+    left: 0; }
+  .jsCarousel__btn-cta2-container {
+    left: 200px; }
   .jsCarousel__btn-cta {
     background-color: #1ab394;
     color: #FFFFFF;
