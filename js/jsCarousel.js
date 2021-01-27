@@ -23,7 +23,7 @@ class JsCarousel {
             },
             ctaButton2: {
                 enabled: true,
-                text: 'PRODUCT VERSIONS',
+                text: 'See product versions',
                 href: '/site/product-versions'
             }
         }, options);
@@ -111,7 +111,7 @@ class JsCarousel {
         }
 
         let ctaButton2 = document.createElement('a');
-        ctaButton2.setAttribute('class', self.setClass('__btn-cta'));
+        ctaButton2.setAttribute('class', self.setClass('__btn-cta-link'));
         ctaButton2.innerText = self.options.ctaButton2.text;
         ctaButton2.href = self.options.ctaButton2.href;
 
@@ -121,8 +121,8 @@ class JsCarousel {
             });
         }
 
-        ctaButtonContainer.appendChild(ctaButton);
         ctaButtonContainer.appendChild(ctaButton2);
+        ctaButtonContainer.appendChild(ctaButton);
 
         Object.keys(this.images).forEach(function (value, i) {
             let linkNode = document.createElement("a");

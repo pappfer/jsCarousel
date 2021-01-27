@@ -115,9 +115,9 @@
     border-radius: 5px;
     font-size: 14px;
     background-image: linear-gradient(to right bottom, var(--color-light-blue), var(--color-dark-blue)); }
-  .jsCarousel__btn-cta-container, .jsCarousel__btn-cta2-container {
+  .jsCarousel__btn-cta-container {
     position: absolute;
-    bottom: 13%;
+    bottom: 10%;
     text-align: center;
     width: 100%; }
   .jsCarousel__btn-cta {
@@ -146,5 +146,8 @@
     .jsCarousel__btn-cta:hover {
       color: #fff;
       text-decoration: none; }
+  .jsCarousel__btn-cta-link {
+    display: block;
+    text-decoration: underline; }
   .jsCarousel__image {
     position: absolute; }

@@ -167,7 +167,7 @@
 
     &__btn-cta-container {
         position: absolute;
-        bottom: 13%;
+        bottom: 5%;
         text-align: center;
         width: 100%;
     }
@@ -201,6 +201,12 @@
             text-decoration: none;
             //background-color: var(--color-dark-blue);
         }
+    }
+
+    &__btn-cta-link {
+        display: block;
+        text-decoration: underline;
+        padding: 5px;
     }
 
     &__image {
