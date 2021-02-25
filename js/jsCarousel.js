@@ -25,7 +25,8 @@ class JsCarousel {
                 enabled: true,
                 text: 'See product versions',
                 href: '/site/product-versions'
-            }
+            },
+            readMoreText: ' ... read more'
         }, options);
 
         this.container = document.getElementById(selector);
@@ -170,7 +171,7 @@ class JsCarousel {
             slideContent.innerHTML = self.images[i].description;
 
             if (self.images[i].url !== '' && self.images[i].url !== '#') {
-                let slideUrlLinkText = document.createTextNode(' ... read more');
+                let slideUrlLinkText = document.createTextNode(self.options.readMoreText);
 
                 let slideUrlLink = document.createElement("a");
                 slideUrlLink.setAttribute('href', self.images[i].url);
